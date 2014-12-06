@@ -6,7 +6,8 @@
  */
 
 #include <iostream>
-
+#include <stack>
+#include <queue>
 #include <cassert>
 
 #include "listFuncs.h"
@@ -64,7 +65,28 @@ void removeAdjacentEvens(ListType &list) {
 
 
 void mirror(ListType & list) {
+	Node * current_node;
+	Node * tail;
+	Node * next;
+	std::queue<int>q;
+	int i=0;
+	if(list == NULL)
+		return;
+	for(current_node = list; current_node!=NULL;current_node=current_node->next){
+		q.push(current_node->data);
+		tail=current_node;	
+		i++;
+	}
 
+	next = new Node(q.front(), NULL);
+	//cout << "front:" <<q.front()<<endl;
+	q.pop();
+	while(--i){
+		next = new Node(q.front(), next);
+		q.pop();
+		//cout << "front:" <<q.front()<<endl;
+	}
+	tail->next = next;
 }
 
 
