@@ -36,6 +36,28 @@ int lastIndexOf(ListType list, int val) {
 
 
 void removeAdjacentEvens(ListType &list) {
+	Node * current_node=list; 
+	Node * previous_node=NULL;
+	Node * temp=NULL;
+	while(current_node!=NULL){
+		if(previous_node == NULL){
+			previous_node=current_node;
+	   		current_node=current_node->next;
+			continue;
+		}
+		while(current_node->data%2==0 && previous_node->data%2==0){
+			temp = current_node->next;
+			delete current_node;
+			//cout << "remove:" << current_node->data <<endl;
+			current_node = temp;	
+			previous_node->next = current_node;
+			if(current_node == NULL)
+				return;
+		}
+
+		previous_node=current_node;
+	   	current_node=current_node->next;
+	}
 
 }
 
