@@ -16,11 +16,21 @@ using namespace std;
 
 int lastIndexOf(ListType list, int val) {
 	Node * current_node;
-	for(current_node = list; current_node!=NULL;current_node=current_node->node)
+	int index;
+	int i=0;
+	int flag=0;
+	for(current_node = list; current_node!=NULL;current_node=current_node->next)
 	{
-		cout<<"here:"<<current_node->data<<endl;	
+		if (current_node->data == val){
+			index = i;
+			flag = 1; // indicate that the val appers in the list
+		}
+		i++;
 	}
-	return 0;  // stub code to get it to compile
+	if(flag == 0)
+		return -1;
+	else
+		return index;  // stub code to get it to compile
 }
 
 
