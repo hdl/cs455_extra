@@ -92,5 +92,35 @@ void mirror(ListType & list) {
 
 
 void rotateLeft(ListType &list, int k) {
+	Node * current_node;
+	int len=0;	
+	int i=0;	
+	Node * old_tail;
+	Node * head;
+	for(current_node = list; current_node!=NULL;current_node=current_node->next){
+		len++;
+		old_tail = current_node;
+	}
+	//cout<<"length:"<<len<<endl;
+	if(k<=0 || k>=len)
+		return;
+
+	old_tail->next = list;
+
+	i=k;
+	current_node = list;
+	while(i--){
+		current_node = current_node->next;
+	}
+	head = current_node;
+	
+	i=k;
+	current_node = list;
+	while(--i){
+		current_node = current_node->next;
+	}
+	current_node->next=NULL;
+	
+	list=head;
 
 }
